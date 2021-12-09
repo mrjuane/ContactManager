@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyVersion>1.12.9.1</AssemblyVersion>
+    <FileVersion>1.12.9.1</FileVersion>
+    <Copyright>Juan Ernesto Salcedo Almonte</Copyright>
+    <Authors>Juan Ernesto Salcedo Almonte</Authors>
+    <Version>1.12.9.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
