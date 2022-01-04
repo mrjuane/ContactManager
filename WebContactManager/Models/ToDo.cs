@@ -10,6 +10,7 @@ namespace WebContactManager.Models
     {
         [Key, Display(Name = "ID")]
         public int ToDoId { get; set; }
+        
         [Required]
         public int ContactId { get; set; }
 

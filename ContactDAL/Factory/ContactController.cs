@@ -16,7 +16,7 @@ namespace ContactDAL.Factory
         {
             if (this._context == null)
             {
-                this._context =  new ContactContext();
+                this._context = new ContactContext();
             }
         }
 

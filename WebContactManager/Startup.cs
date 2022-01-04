@@ -24,8 +24,13 @@ namespace WebContactManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient("Contact", client => client.BaseAddress = new Uri(Configuration.GetValue<string>("ApiServices")));
-            services.AddHttpClient("ToDo", client => client.BaseAddress = new Uri(Configuration.GetValue<string>("ApiServices")));
+            //to run the changes in views just realoading the page
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            //adding httpclient to the services to inject to controllers
+            services.AddHttpClient("Contact", client => client.BaseAddress = new Uri(string.Concat(Configuration.GetValue<string>("ApiServices"), "Contact/")));
+            services.AddHttpClient("ToDo", client => client.BaseAddress = new Uri(string.Concat(Configuration.GetValue<string>("ApiServices"), "ToDo/")));
+            //------------------------------------------------------------
 
             services.AddControllersWithViews();
         }
@@ -54,7 +59,7 @@ namespace WebContactManager
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Contact}/{action=Index}/{id?}");
             });
         }
     }

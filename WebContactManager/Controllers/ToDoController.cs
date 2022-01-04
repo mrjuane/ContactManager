@@ -69,13 +69,13 @@ namespace WebContactManager.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Insert(ToDo entity)
+        public async Task<JsonResult> Insert(ToDo entity)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return string.Empty;
+                    return Json(entity);
                 }
 
                 string result = string.Empty;
@@ -89,7 +89,7 @@ namespace WebContactManager.Controllers
                     result = data;
                 }
 
-                return result;
+                return Json(result);
             }
             catch (Exception ex)
             {
@@ -99,10 +99,15 @@ namespace WebContactManager.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Update(ToDo entity)
+        public async Task<JsonResult> Update(ToDo entity)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return Json(entity);
+                }
+
                 string result = string.Empty;
 
                 StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
@@ -114,7 +119,7 @@ namespace WebContactManager.Controllers
                     result = data;
                 }
 
-                return result;
+                return Json(result);
             }
             catch (Exception ex)
             {
@@ -124,7 +129,7 @@ namespace WebContactManager.Controllers
         }
 
         [HttpDelete]
-        public async Task<string> Delete(int id)
+        public async Task<JsonResult> Delete(int id)
         {
             try
             {
@@ -137,7 +142,7 @@ namespace WebContactManager.Controllers
                     result = data;
                 }
 
-                return result;
+                return Json(result);
             }
             catch (Exception ex)
             {

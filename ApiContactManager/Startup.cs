@@ -30,10 +30,11 @@ namespace ApiContactManager
         public void ConfigureServices(IServiceCollection services)
         {
             //Adding startup db context
-            services.AddDbContext<ContactContext>(c => c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ContactContext>(c => c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             //adding the repositories to services
-            services.AddSingleton<IBaseRepository<Contact>,  ContactController>();
-            //services.AddSingleton<IBaseRepository<ToDo>, ToDoController>();
+            services.AddTransient<IBaseRepository<Contact>, ContactController>();
+            services.AddTransient<IBaseRepository<ToDo>, ToDoController>();
 
             //********************************************************************
 

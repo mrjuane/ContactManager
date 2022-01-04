@@ -11,16 +11,19 @@ namespace WebContactManager.Models
         [Key, Display(Name ="ID")]
         public int ConstactId { get; set; }
 
-        [Required, Display(Name = "First Name")]
+        [Required, Display(Name = "First Name"), MaxLength(50)]
         public string FirstName { get; set; }
 
-        [Required, Display(Name = "Last Name")]
+        [Required, Display(Name = "Last Name"), MaxLength(50)]
         public string LastName { get; set; }
        
+        [MaxLength(250)]
         public string Address { get; set; }
 
+        [MaxLength(100),DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [MaxLength(10), DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         [Required]
